@@ -1,0 +1,6 @@
+[
+  {
+    "name": "ThreshKeepalive",
+    "regex": "^keepalive(?:\\s+(.+))?$"
+  }
+]

@@ -75,7 +75,7 @@ package archive.
 
 ## Project layout
 
-```
+```text
 src/
 ├── aliases/          # User-facing command aliases
 │   ├── aliases.json

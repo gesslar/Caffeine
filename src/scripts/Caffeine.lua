@@ -27,8 +27,8 @@ function Caffeine.main()
     "caffeine:uninstall",
     "sysUninstall",
     function()
-      deleteAllNamedEventHandlers("__PKGNAME__")
-      deleteAllNamedTimers("__PKGNAME__")
+      deleteAllNamedEventHandlers(Caffeine.userName)
+      deleteAllNamedTimers(Caffeine.userName)
       cecho("<brown>[__PKGNAME__]<r> Caffeine has been uninstalled.\n")
       Caffeine = nil
     end

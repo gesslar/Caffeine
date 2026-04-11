@@ -1,4 +1,9 @@
-# ThreshKeepalive
-This package will send a keepalive package every 2.5 minutes.
+# Caffeine
 
-For the nerds out there, the keepalive is just sending IAC NOP.
+Send a keepalive message every 150,000,000,000,000 picoseconds.
+
+For the nerds out there, the keepalive is just sending `IAC NOP`.
+
+## License
+
+`caffeine` is released under the [0BSD](LICENSE.txt).

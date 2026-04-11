@@ -1,0 +1,43 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "mfile"
+      ],
+      "url": "https://schema.gesslar.dev/muddler/v1/mfile.json",
+    },
+    {
+      "fileMatch": [
+        "src/**/aliases.json"
+      ],
+      "url": "https://schema.gesslar.dev/muddler/v1/aliases.json",
+    },
+    {
+      "fileMatch": [
+        "src/**/keys.json"
+      ],
+      "url": "https://schema.gesslar.dev/muddler/v1/keys.json",
+    },
+    {
+      "fileMatch": [
+        "src/**/scripts.json"
+      ],
+      "url": "https://schema.gesslar.dev/muddler/v1/scripts.json",
+    },
+    {
+      "fileMatch": [
+        "src/**/timers.json"
+      ],
+      "url": "https://schema.gesslar.dev/muddler/v1/timers.json",
+    },
+    {
+      "fileMatch": [
+        "src/**/triggers.json"
+      ],
+      "url": "https://schema.gesslar.dev/muddler/v1/triggers.json",
+    },
+  ],
+  "Lua.workspace.library": [
+    "/home/gesslar/.config/Code/User/globalStorage/delwing.mudlet-scripts-sdk\\docs"
+  ]
+}

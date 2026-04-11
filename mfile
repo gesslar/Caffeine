@@ -1,10 +1,9 @@
 {
-  "package": "ThreshKeepalive",
-  "title": "Send a keepalive message every 150,000,000,000,000 picoseconds",
-  "description": "Threshold Keepalive package for Mudlet",
-  "version": "1.6.2",
-  "author": "Gesslar@ThresholdRPG",
-  "icon": "griffon-right.jpg",
+  "package": "Caffeine",
+  "title": "A keepalive pinger thinger.",
+  "version": "1.6.3",
+  "author": "gesslar",
+  "icon": "coffee-bean.png",
   "dependencies": "",
   "outputFile": true
 }

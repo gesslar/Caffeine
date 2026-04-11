@@ -1,6 +1,9 @@
+local packageName = "__PKGNAME__"
+local settingsFile = packageName .. ".settings.lua"
+local userName = packageName
+
 Caffeine = Caffeine or {
-  glu = require("__PKGNAME__/Glu-single")("__PKGNAME__"),
-  userName = getProfileName(),
+  glu = require(packageName .. "/Glu-single")(packageName),
   ping = function()
     local TN_IAC = 255
     local TN_NOP = 241
@@ -11,25 +14,29 @@ Caffeine = Caffeine or {
 }
 
 function Caffeine.main()
-  Caffeine.prefs = Caffeine.glu.preferences.load("__PKGNAME__", "__PKGNAME__.settings.lua", {
+  Caffeine.prefs = Caffeine.glu.preferences.load(packageName, settingsFile, {
     interval = 150, -- seconds, or 2.5 minutes
   })
 
   registerNamedEventHandler(
-    Caffeine.userName,
+    userName,
     "caffeine:command",
     "caffeine:command",
     Caffeine.command
   )
 
   registerNamedEventHandler(
-    Caffeine.userName,
+    userName,
     "caffeine:uninstall",
     "sysUninstall",
-    function()
-      deleteAllNamedEventHandlers(Caffeine.userName)
-      deleteAllNamedTimers(Caffeine.userName)
-      cecho("<brown>[__PKGNAME__]<r> Caffeine has been uninstalled.\n")
+    function(_, pkg)
+      if pkg ~= packageName then return end
+
+      deleteAllNamedEventHandlers(userName)
+      deleteAllNamedTimers(userName)
+
+      cecho("<brown>[" .. packageName .. "]<r> Caffeine has been uninstalled.\n")
+
       Caffeine = nil
     end
   )
@@ -42,18 +49,18 @@ function Caffeine.command(_, arg, arg2)
     if arg2 <= 60 then arg2 = 60 end
 
     Caffeine.prefs.interval = arg2
-    Caffeine.glu.preferences.save("__PKGNAME__", "__PKGNAME__.settings.lua", Caffeine.prefs)
+    Caffeine.glu.preferences.save(packageName, settingsFile, Caffeine.prefs)
     Caffeine.startTimer()
   end
 
-  cecho("<brown>[__PKGNAME__]<r> Wake up call set for every " .. Caffeine.prefs.interval .. " seconds.\n")
+  cecho("<brown>[" .. packageName .. "]<r> Wake up call is set for every " .. Caffeine.prefs.interval .. " seconds.\n")
 end
 
 function Caffeine.startTimer()
   Caffeine.stopTimer()
 
   registerNamedTimer(
-    Caffeine.userName,
+    userName,
     "caffeine:timer",
     Caffeine.prefs.interval,
     Caffeine.ping,
@@ -62,7 +69,7 @@ function Caffeine.startTimer()
 end
 
 function Caffeine.stopTimer()
-  deleteNamedTimer(Caffeine.userName, "caffeine:timer")
+  deleteNamedTimer(userName, "caffeine:timer")
 end
 
 Caffeine.main()

@@ -1,7 +1,11 @@
 {
-  "scripts": {
-    "build": "muddle",
-    "watch": "muddle -w"
+  "name": "caffeine",
+  "author": {
+    "name": "gesslar"
   },
-  "license": "Unlicense"
+  "scripts": {
+    "build": "pnpx @gesslar/muddy",
+    "watch": "pnpx @gesslar/muddy -w"
+  },
+  "license": "0BSD"
 }

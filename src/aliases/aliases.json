@@ -1,6 +1,10 @@
 [
   {
-    "name": "ThreshKeepalive",
-    "regex": "^keepalive(?:\\s+(.+))?$"
+    "name": "Caffeine Interval",
+    "regex": "^/caffeine( +\\d+)$"
+  },
+  {
+    "name": "Caffeine",
+    "regex": "^/caffeine(?! +\\d+$).*$"
   }
 ]

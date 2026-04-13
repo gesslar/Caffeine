@@ -1,7 +1,7 @@
 {
   "package": "Caffeine",
   "title": "A keepalive pinger thinger.",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "author": "gesslar",
   "icon": "coffee-bean.png",
   "dependencies": "",

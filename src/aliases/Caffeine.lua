@@ -1,1 +1,1 @@
-raiseEvent("caffeine:command")
+raiseEvent("__PKGNAME__:command")

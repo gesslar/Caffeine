@@ -26,7 +26,3 @@ Mudlet sessions.
 ## License
 
 `caffeine` is released under the [0BSD](LICENSE.txt).
-
----
-
-Curious how it works under the hood? See [IMPLEMENTATION.md](IMPLEMENTATION.md).

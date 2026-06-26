@@ -1,9 +1,7 @@
-local packageName = "__PKGNAME__"
-local settingsFile = packageName .. ".settings.lua"
-local userName = packageName
+local glu = require("__PKGNAME__/vendor/Glu-single")("__PKGNAME__")
+local settingsFile = "__PKGNAME__.settings.lua"
 
-Caffeine = Caffeine or {
-  glu = require(packageName .. "/Glu-single")(packageName),
+__PKGNAME__ = __PKGNAME__ or {
   ping = function()
     local TN_IAC = 255
     local TN_NOP = 241
@@ -13,63 +11,74 @@ Caffeine = Caffeine or {
   end
 }
 
-function Caffeine.main()
-  Caffeine.prefs = Caffeine.glu.preferences.load(packageName, settingsFile, {
+function __PKGNAME__.main()
+  __PKGNAME__.prefs = glu.preferences.load("__PKGNAME__", settingsFile, {
     interval = 150, -- seconds, or 2.5 minutes
   })
 
   registerNamedEventHandler(
-    userName,
-    "caffeine:command",
-    "caffeine:command",
-    Caffeine.command
+    "__PKGNAME__",
+    "__PKGNAME__:command",
+    "__PKGNAME__:command",
+    __PKGNAME__.command
   )
 
   registerNamedEventHandler(
-    userName,
-    "caffeine:uninstall",
-    "sysUninstall",
+    "__PKGNAME__",
+    "__PKGNAME__:install",
+    "sysInstall",
     function(_, pkg)
-      if pkg ~= packageName then return end
+      if pkg ~= "__PKGNAME__" then return end
 
-      deleteAllNamedEventHandlers(userName)
-      deleteAllNamedTimers(userName)
-
-      cecho("<brown>[" .. packageName .. "]<r> Caffeine has been uninstalled.\n")
-
-      Caffeine = nil
+      cecho("<brown>[__PKGNAME__]<r> Thank you for installing __PKGNAME__.\n")
     end
   )
 
-  Caffeine.startTimer()
+  registerNamedEventHandler(
+    "__PKGNAME__",
+    "__PKGNAME__:uninstall",
+    "sysUninstall",
+    function(_, pkg)
+      if pkg ~= "__PKGNAME__" then return end
+
+      deleteAllNamedEventHandlers("__PKGNAME__")
+      deleteAllNamedTimers("__PKGNAME__")
+
+      cecho("<brown>[__PKGNAME__]<r> __PKGNAME__ has been uninstalled.\n")
+
+      __PKGNAME__ = nil
+    end
+  )
+
+  __PKGNAME__.startTimer()
 end
 
-function Caffeine.command(_, arg, arg2)
+function __PKGNAME__.command(_, arg, arg2)
   if arg == "interval" then
     if arg2 <= 60 then arg2 = 60 end
 
-    Caffeine.prefs.interval = arg2
-    Caffeine.glu.preferences.save(packageName, settingsFile, Caffeine.prefs)
-    Caffeine.startTimer()
+    __PKGNAME__.prefs.interval = arg2
+    glu.preferences.save("__PKGNAME__", settingsFile, __PKGNAME__.prefs)
+    __PKGNAME__.startTimer()
   end
 
-  cecho("<brown>[" .. packageName .. "]<r> Wake up call is set for every " .. Caffeine.prefs.interval .. " seconds.\n")
+  cecho("<brown>[__PKGNAME__]<r> Wake up call is set for every " .. __PKGNAME__.prefs.interval .. " seconds.\n")
 end
 
-function Caffeine.startTimer()
-  Caffeine.stopTimer()
+function __PKGNAME__.startTimer()
+  __PKGNAME__.stopTimer()
 
   registerNamedTimer(
-    userName,
-    "caffeine:timer",
-    Caffeine.prefs.interval,
-    Caffeine.ping,
+    "__PKGNAME__",
+    "__PKGNAME__:timer",
+    __PKGNAME__.prefs.interval,
+    __PKGNAME__.ping,
     true
   )
 end
 
-function Caffeine.stopTimer()
-  deleteNamedTimer(userName, "caffeine:timer")
+function __PKGNAME__.stopTimer()
+  deleteNamedTimer("__PKGNAME__", "__PKGNAME__:timer")
 end
 
-Caffeine.main()
+__PKGNAME__.main()

@@ -1,1 +1,1 @@
-raiseEvent("caffeine:command", "interval", tonumber(matches[2]))
+raiseEvent("__PKGNAME__:command", "interval", tonumber(matches[2]))

@@ -1,11 +1,18 @@
 {
   "name": "caffeine",
+  "version": "1.7.0",
   "author": {
     "name": "gesslar"
   },
   "scripts": {
-    "build": "npx @gesslar/muddy",
-    "watch": "npx @gesslar/muddy -w"
+    "build": "npx muddy",
+    "watch": "npx muddy -w",
+    "major": "npx muddy version major --package && npm i",
+    "minor": "npx muddy version minor --package && npm i",
+    "patch": "npx muddy version patch --package && npm i"
   },
-  "license": "0BSD"
+  "license": "0BSD",
+  "devDependencies": {
+    "@gesslar/muddy": "^3.2.2"
+  }
 }
